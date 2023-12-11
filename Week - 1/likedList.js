@@ -18,7 +18,8 @@ class linkedList{
         return this.size
     }
 
-    // adding valueas to start head will move the left and tile tail will stay : head -> value 3 -> value 2 -> value 1 
+    // adding valueas to start head will move with next node that means head will be the last added node -
+    // that why the last added value is the first and tile tail will stay : head -> value 3 -> value 2 -> value 1 
     prepend(value){
         const node = new Node(value)
         if(this.isEmpty()){
@@ -28,7 +29,7 @@ class linkedList{
             this.head = node
         }
         this.size++
-    }                     // o(1)t
+    } // o(1)t
 
 
     // adding valueas to end head will stay and tail will move to the end : head -> value 1 -> value 2 -> value 3
@@ -44,7 +45,48 @@ class linkedList{
             pos.next = node
         }
         this.size++
-    }                      // o(n)t
+    } // o(n)t
+
+
+    // inserting value at a selecte index
+    insert(value , index){
+        if(index < 0 || index > this.size){
+            return console.log('Enter a valid indext position');
+        }else if(index === 0){
+            this.prepend(value)
+        }else{
+            const node = new Node(value)
+            let pos = this.head;
+            for(let i=0; i<index-1; i++){
+                pos = pos.next;
+            }
+            node.next = pos.next;
+            pos.next = node
+            this.size++;
+        }
+    }
+
+
+    // removing values at a selected index
+    remove(index){
+        if(index <0 || index >= this.size){
+            return console.log('plaease enter a valid index');
+        }
+        let removeNode
+        if(index === 0){
+            removeNode = this.head;
+            this.head = this.head.next;
+        }else{
+            let pos = this.head;
+            for(let i=0; i<index-1; i++){
+                pos = pos.next;
+            }
+            removeNode = pos.next;
+            pos.next = removeNode.next;
+        }
+        this.size --;
+        return removeNode.value;
+    }
 
 
     // printing the values
@@ -68,10 +110,21 @@ const list = new linkedList()
 console.log('list is empty?',list.isEmpty());
 console.log('list size',list.getSize());
 list.print()
-
 list.append(10)
 list.print()
 
 list.append(30)
 list.append(50)
+list.print()
+
+list.insert(40,0);
+list.print();
+list.insert(20,0);
+list.print();
+list.insert(30,1);
+list.print();
+list.insert(50,3);
+list.print();
+
+list.remove(1)
 list.print()
