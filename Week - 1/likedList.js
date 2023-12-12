@@ -68,16 +68,16 @@ class linkedList{
 
 
     // removing values at a selected index
-    remove(index){
+    removeIndex(index){
         if(index <0 || index >= this.size){
             return console.log('plaease enter a valid index');
         }
         let removeNode
-        if(index === 0){
+        if(index === 0){                    // o(1)T
             removeNode = this.head;
             this.head = this.head.next;
         }else{
-            let pos = this.head;
+            let pos = this.head;            // o(n)T
             for(let i=0; i<index-1; i++){
                 pos = pos.next;
             }
@@ -85,7 +85,32 @@ class linkedList{
             pos.next = removeNode.next;
         }
         this.size --;
-        return removeNode.value;
+        return removeNode.value
+    }
+
+
+    // removing given value
+    removeVlue(value){
+        if(this.isEmpty()){
+            return null
+        }
+        if(value === this.head.value){   //o(1)t
+            this.head = this.head.next
+            this.size--
+            return value
+        }else{
+            let pos = this.head;
+            while(pos.next && pos.next.value != value){   //o(n)t
+                pos = pos.next
+            }
+            if(pos.next){
+                const removeNode = pos.next
+                pos.next = removeNode.next
+                this.size --
+                return value
+            }
+            return null
+        }
     }
 
 
@@ -126,5 +151,5 @@ list.print();
 list.insert(50,3);
 list.print();
 
-list.remove(1)
+console.log(list.removeVlue(20));
 list.print()
