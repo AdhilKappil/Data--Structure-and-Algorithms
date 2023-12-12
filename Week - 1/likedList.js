@@ -114,6 +114,25 @@ class linkedList{
     }
 
 
+    // serching
+    search(value){
+        if(this.isEmpty()){
+            return false
+        }else{
+            let curr = this.head;
+            let i=0;
+            while(curr){
+                if(curr.value === value){
+                    return i
+                }
+                curr = curr.next;
+                i++;
+            }
+            return false
+        }
+    }
+
+
     // printing the values
     print(){
         if(this.isEmpty()){
@@ -134,13 +153,13 @@ class linkedList{
 const list = new linkedList()
 console.log('list is empty?',list.isEmpty());
 console.log('list size',list.getSize());
-list.print()
-list.append(10)
-list.print()
+// list.print()
+// list.append(10)
+// list.print()
 
-list.append(30)
-list.append(50)
-list.print()
+// list.append(30)
+// list.append(50)
+// list.print()
 
 list.insert(40,0);
 list.print();
@@ -151,5 +170,4 @@ list.print();
 list.insert(50,3);
 list.print();
 
-console.log(list.removeVlue(20));
-list.print()
+console.log(list.search(30));
