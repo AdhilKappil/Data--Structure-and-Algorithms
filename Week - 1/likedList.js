@@ -147,18 +147,31 @@ class linkedList{
     }
 
 
+    // finding the middle element 
+    getMidd() {
+        let slow = this.head;
+        let fast = this.head;
+    
+        while (fast.next && fast.next.next) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow.value;
+    }
+
+
     // printing the values
-    linkedListToArray(){
+    print(){
         if(this.isEmpty()){
             console.log('list is empty');
         }else{
             let curr = this.head
-            let arr = []
+            let display = ''
             while(curr){
-                arr.push(curr.value)
+                display += `${curr.value} `
                 curr = curr.next
             }
-           console.log(arr);
+            console.log(display);
         }
     }
 }
@@ -167,14 +180,7 @@ class linkedList{
 const list = new linkedList()
 console.log('list is empty?',list.isEmpty());
 console.log('list size',list.getSize());
-
-// const arr = [1,3,5,7,9]
-// for(let i=0; i<arr.length; i++){
-//     list.append(arr[i])
-// }
-
 // list.print()
-
 // list.append(10)
 // list.print()
 
@@ -183,14 +189,13 @@ console.log('list size',list.getSize());
 // list.print()
 
 list.insert(40,0);
-
+list.print();
 list.insert(20,0);
-
+list.print();
 list.insert(30,1);
-
+list.print();
 list.insert(50,3);
+list.print();
 
-
-list.linkedListToArray()
-
-
+list.reverse();
+list.print();

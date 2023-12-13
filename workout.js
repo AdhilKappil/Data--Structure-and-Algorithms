@@ -128,6 +128,17 @@ class linkedList{
         this.head = prev
     }
 
+    getMidd() {
+        let slow = this.head;
+        let fast = this.head;
+    
+        while (fast.next && fast.next.next) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow.value;
+    }
+    
     print(){
         let curr = this.head
         let display = ''
@@ -151,5 +162,6 @@ list.append(15)
 list.append(20)
 list.append(10)
 list.print()
+console.log(list.getMidd());
 
 
