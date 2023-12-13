@@ -1,6 +1,6 @@
 class Node {
     constructor(value){
-        this.value = value;
+        this.value = value; 
         this.next = null;
     }
 }
@@ -19,7 +19,7 @@ class linkedList{
     }
 
     // adding valueas to start head will move with next node that means head will be the last added node -
-    // that why the last added value is the first and tile tail will stay : head -> value 3 -> value 2 -> value 1 
+    // that why the last added value is the first and tail will stay menas tail will be the first added node: head -> value 3 -> value 2 -> value 1 
     prepend(value){
         const node = new Node(value)
         if(this.isEmpty()){
@@ -52,7 +52,7 @@ class linkedList{
     insert(value , index){
         if(index < 0 || index > this.size){
             return console.log('Enter a valid indext position');
-        }else if(index === 0){
+        }else if(index === 0){    // o(1)T
             this.prepend(value)
         }else{
             const node = new Node(value)
@@ -133,18 +133,32 @@ class linkedList{
     }
 
 
+    // reverse
+    reverse(){
+        let prev = null;
+        let curr = this.head
+        while(curr){
+            let next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        this.head = prev
+    }
+
+
     // printing the values
-    print(){
+    linkedListToArray(){
         if(this.isEmpty()){
             console.log('list is empty');
         }else{
             let curr = this.head
-            let display = ''
+            let arr = []
             while(curr){
-                display += `${curr.value} `
+                arr.push(curr.value)
                 curr = curr.next
             }
-            console.log(display);
+           console.log(arr);
         }
     }
 }
@@ -153,7 +167,14 @@ class linkedList{
 const list = new linkedList()
 console.log('list is empty?',list.isEmpty());
 console.log('list size',list.getSize());
+
+// const arr = [1,3,5,7,9]
+// for(let i=0; i<arr.length; i++){
+//     list.append(arr[i])
+// }
+
 // list.print()
+
 // list.append(10)
 // list.print()
 
@@ -162,12 +183,14 @@ console.log('list size',list.getSize());
 // list.print()
 
 list.insert(40,0);
-list.print();
-list.insert(20,0);
-list.print();
-list.insert(30,1);
-list.print();
-list.insert(50,3);
-list.print();
 
-console.log(list.search(30));
+list.insert(20,0);
+
+list.insert(30,1);
+
+list.insert(50,3);
+
+
+list.linkedListToArray()
+
+
