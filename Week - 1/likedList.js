@@ -17,7 +17,6 @@ class linkedList{
     getSize(){
         return this.size
     }
-
     // adding valueas to start head will move with next node that means head will be the last added node -
     // that why the last added value is the first and tail will stay menas tail will be the first added node: head -> value 3 -> value 2 -> value 1 
     prepend(value){
@@ -30,8 +29,6 @@ class linkedList{
         }
         this.size++
     } // o(1)t
-
-
     // adding valueas to end head will stay and tail will move to the end : head -> value 1 -> value 2 -> value 3
     append(value){
         const node = new Node(value)
@@ -46,8 +43,6 @@ class linkedList{
         }
         this.size++
     } // o(n)t
-
-
     // inserting value at a selecte index
     insert(value , index){
         if(index < 0 || index > this.size){
@@ -65,8 +60,6 @@ class linkedList{
             this.size++;
         }
     }
-
-
     // removing values at a selected index
     removeIndex(index){
         if(index <0 || index >= this.size){
@@ -87,8 +80,6 @@ class linkedList{
         this.size --;
         return removeNode.value
     }
-
-
     // removing given value
     removeVlue(value){
         if(this.isEmpty()){
@@ -112,8 +103,6 @@ class linkedList{
             return null
         }
     }
-
-
     // serching
     search(value){
         if(this.isEmpty()){
@@ -131,8 +120,6 @@ class linkedList{
             return false
         }
     }
-
-
     // reverse
     reverse(){
         let prev = null;
@@ -145,8 +132,6 @@ class linkedList{
         }
         this.head = prev
     }
-
-
     // finding the middle element 
     getMidd() {
         let slow = this.head;
@@ -158,8 +143,6 @@ class linkedList{
         }
         return slow.value;
     }
-
-
     // printing the values
     print(){
         if(this.isEmpty()){
@@ -175,18 +158,16 @@ class linkedList{
         }
     }
 }
-
-
 const list = new linkedList()
 console.log('list is empty?',list.isEmpty());
 console.log('list size',list.getSize());
-// list.print()
-// list.append(10)
-// list.print()
+list.print()
+list.append(10)
+list.print()
 
-// list.append(30)
-// list.append(50)
-// list.print()
+list.append(30)
+list.append(50)
+list.print()
 
 list.insert(40,0);
 list.print();
@@ -199,3 +180,8 @@ list.print();
 
 list.reverse();
 list.print();
+
+list.removeIndex(2);
+list.print()
+list.removeVlue(30)
+list.print()

@@ -6,11 +6,6 @@ function factorial (n){
     }
     return fac
 }
-console.log(factorial(4));
-// big o = o(n)
-
-
-
 // ======= Prime ========
 function prime (n){
 
@@ -20,12 +15,7 @@ function prime (n){
         if(n%i==0)return false
     }
     return true
-}
-console.log(prime(10));
-// big o = o(n)
-
-
-
+}  // big o = o(n)
 // ======= power of two ========
 function powerOf2 (n){
 
@@ -35,13 +25,6 @@ function powerOf2 (n){
 
    return (n & (n-1)) === 0
 }
-console.log(powerOf2(16));
-console.log(powerOf2(10));
-console.log(powerOf2(8));
-// big o = o(1)
-
-
-
 // ======= fibinachi ========
 function fibinachi(n){
     
@@ -52,13 +35,16 @@ function fibinachi(n){
     }
     return feb
 } 
-console.log(fibinachi(1));
-console.log(fibinachi(3));
-console.log(fibinachi(7));
-// big o = o(n)
-
-
-
+// recursive fibinachi
+function recFibinachi(n){
+    if(n<=2){
+        return [0,1]
+    }else{
+        let fib = recFibinachi(n-1)
+        fib.push(fib[fib.length-1]+fib[fib.length-2]);
+        return fib
+    }
+}
 // ======= Factorial using recuation ======== 
 function recfactorial(n){  
 
@@ -69,13 +55,6 @@ function recfactorial(n){
     return n*recfactorial(n-1)
 
 } 
-console.log(recfactorial(1));
-console.log(recfactorial(3));
-console.log(recfactorial(5));
-// big o = o(n)
-
-
-
 // ======= linear search ========
 function linearSearch(arr,n){  
     let r = -1
@@ -89,13 +68,6 @@ function linearSearch(arr,n){
     return r
 
 } 
-console.log(linearSearch([1,2,3,4,5,6],1));
-console.log(linearSearch([10,93,3,3,5],100));
-console.log(linearSearch([1,2,3,4,2,6],2));
-// big o = o(n)
-
-
-
 // ======= binary search ========
 function BinarySearch(arr,n){  
 
@@ -116,7 +88,22 @@ function BinarySearch(arr,n){
     return false
 
 } 
-console.log(BinarySearch([1,2,3,4,5,6],1));
-console.log(BinarySearch([10,20,30,4],100));
-console.log(BinarySearch([1,2,3,4,5,6],2));
-// big o = o(log(n))
+// binary search using recursion
+function recSearch(arr,v){
+    return search(arr,v,0,arr.length-1)
+}
+
+function search(arr,v,lef,rig){
+    if(lef>rig){
+        return false
+    }
+    let midd = Math.floor((rig+lef)/2)
+    if(arr[midd] === v){
+        return midd
+    }
+    if(arr[midd]>v){
+        return search(arr,v,lef,midd-1)
+    }else{
+        return search(arr,v,midd+1,rig)
+    }
+}
