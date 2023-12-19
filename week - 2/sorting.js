@@ -67,6 +67,7 @@
 // avg case O(n log n)
 
 
+// merge sort
 function mergeSort (arr){
     if(arr.length<2){
         return arr
@@ -90,3 +91,4 @@ function sort(lef,rig){
 
  const arr = [-4,7,1,-2,10,0]
 console.log(mergeSort(arr));
+// O(n log n)  best time coplexity sorting
