@@ -6,6 +6,8 @@ function factorial (n){
     }
     return fac
 }
+
+
 // ======= Prime ========
 function prime (n){
 
@@ -16,6 +18,8 @@ function prime (n){
     }
     return true
 }  // big o = o(n)
+
+
 // ======= power of two ========
 function powerOf2 (n){
 
@@ -25,6 +29,8 @@ function powerOf2 (n){
 
    return (n & (n-1)) === 0
 }
+
+
 // ======= fibinachi ========
 function fibinachi(n){
     
@@ -35,6 +41,8 @@ function fibinachi(n){
     }
     return feb
 } 
+
+
 // recursive fibinachi
 function recFibinachi(n){
     if(n<=2){
@@ -45,6 +53,8 @@ function recFibinachi(n){
         return fib
     }
 }
+
+
 // ======= Factorial using recuation ======== 
 function recfactorial(n){  
 
@@ -55,6 +65,8 @@ function recfactorial(n){
     return n*recfactorial(n-1)
 
 } 
+
+
 // ======= linear search ========
 function linearSearch(arr,n){  
     let r = -1
@@ -68,6 +80,8 @@ function linearSearch(arr,n){
     return r
 
 } 
+
+
 // ======= binary search ========
 function BinarySearch(arr,n){  
 
@@ -88,6 +102,8 @@ function BinarySearch(arr,n){
     return false
 
 } 
+
+
 // binary search using recursion
 function recSearch(arr,v){
     return search(arr,v,0,arr.length-1)
