@@ -68,27 +68,50 @@
 
 
 // merge sort
-function mergeSort (arr){
-    if(arr.length<2){
-        return arr
-    }
-    const midd = Math.floor(arr.length/2);
-    const lef = arr.slice(0,midd);
-    const rig = arr.slice(midd);
-    return sort(mergeSort(lef), mergeSort(rig))
-}
-function sort(lef,rig){
-    const sortArry = []
-    while(lef.length && rig.length){
-        if(lef[0]<=rig[0]){
-            sortArry.push(lef.shift())
-        }else{
-            sortArry.push(rig.shift())
+// function mergeSort (arr){
+//     if(arr.length<2){
+//         return arr
+//     }
+//     const midd = Math.floor(arr.length/2);
+//     const lef = arr.slice(0,midd);
+//     const rig = arr.slice(midd);
+//     return sort(mergeSort(lef), mergeSort(rig))
+// }
+// function sort(lef,rig){
+//     const sortArry = []
+//     while(lef.length && rig.length){
+//         if(lef[0]<=rig[0]){
+//             sortArry.push(lef.shift())
+//         }else{
+//             sortArry.push(rig.shift())
+//         }
+//     }
+//     return [...sortArry,...lef,...rig]
+// }
+
+//  const arr = [-4,7,1,-2,10,0]
+// console.log(mergeSort(arr));
+// O(n log n)  best time coplexity sorting
+
+
+// selection sor
+function selectionSort(arr){
+    for(let i=0; i<arr.length-1; i++){
+        let min = i
+        for(let j=i+1; j<arr.length; j++){
+            if(arr[min]>arr[j]){
+                min = j
+            }
         }
+       if(min != i){
+        let temp = arr[i];
+        arr[i] = arr[min];
+        arr[min] = temp
+       }
     }
-    return [...sortArry,...lef,...rig]
+    return arr
 }
 
  const arr = [-4,7,1,-2,10,0]
-console.log(mergeSort(arr));
-// O(n log n)  best time coplexity sorting
+console.log(selectionSort(arr));
+// O(n^2)  

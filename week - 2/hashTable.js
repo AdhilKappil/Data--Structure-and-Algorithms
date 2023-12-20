@@ -1,3 +1,11 @@
+class Node{
+    constructor(key,value){
+        this.key = key
+        this.value = value;
+        this.next = null;
+    }
+}
+
 class HashTable{
     constructor(size){
         this.table = new Array();
@@ -11,22 +19,67 @@ class HashTable{
         }
         return total % this.size;
     }
-    set(key, value) {
+
+    set(key, value) { 
         const index = this.hash(key);
-        this.table[index] = value;
+
+        if(this.table[index] === null){
+            this.table[index] =new Node(key,value)
+           
+        }else{
+            let curr = this.table[index]
+            while(curr){
+                if(curr.key === key){
+                    curr.value = value
+                    return
+                }
+                curr = curr.next;
+            }
+            const node = new Node(key,value);
+            node.next = this.table[index];
+            this.table[index] = node;
+        }
     }
-    get(key){
+
+    search(key){
         const index = this.hash(key);
-        return this.table[index] 
+        let curr = this.table[index]
+
+        while(curr){
+            if(curr.key === key){
+                return curr.value
+            }
+            curr = curr.next
+        }
+        return undefined
     }
+
     remove(key){
         const index = this.hash(key);
-        this.table[index] = undefined;
+        let curr = this.table[index];
+        let prev = null
+
+        while(curr){
+           if(curr.key === key){
+              if(prev){
+                  prev.next = curr.next
+               }else{
+                  this.table[index] = curr.next
+               }
+               return
+           }
+             prev = curr;
+             curr = curr.next
+        }
+       return console.log('hash table is empty');
     }
+
     display(){
         for(let i=0; i<this.table.length; i++){
             if(this.table[i]){
-                console.log(i, this.table[i]);
+                let curr=this.table[i]
+                console.log(this.table[i]);
+                // console.log(`${i} ,${curr.key}, ${curr.value}`);
             }
         }
     }
@@ -38,11 +91,13 @@ table.set("name", "Adhil")
 table.set('age', 24)
 table.display()
 
-console.log(table.get("name"));
+// console.log(table.search("name"));
 
-table.set("name", "farzi")
+table.set("naem", "farzi")
+table.set("name", "favas")
 table.display()
 
 console.log("After removing 'name':");
 table.remove("name");
 table.display();
+console.log(table.search("naem"));
