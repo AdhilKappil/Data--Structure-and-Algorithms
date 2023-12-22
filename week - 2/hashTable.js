@@ -12,12 +12,16 @@ class HashTable{
         this.size = size;
     }
 
+    // hash(key){
+    //     let total = 0;
+    //     for(let i=0; i<key.length; i++){
+    //         total += key.charCodeAt(i)
+    //     }
+    //     return total % this.size;
+    // }
+
     hash(key){
-        let total = 0;
-        for(let i=0; i<key.length; i++){
-            total += key.charCodeAt(i)
-        }
-        return total % this.size;
+        return key.toString().length % this.size
     }
 
     set(key, value) { 
@@ -63,7 +67,7 @@ class HashTable{
            if(curr.key === key){
               if(prev){
                   prev.next = curr.next
-               }else{
+               }else{   
                   this.table[index] = curr.next
                }
                return
@@ -71,13 +75,13 @@ class HashTable{
              prev = curr;
              curr = curr.next
         }
-       return console.log('hash table is empty');
+       return undefined;
     }
 
     display(){
         for(let i=0; i<this.table.length; i++){
             if(this.table[i]){
-                let curr=this.table[i]
+                // let curr=this.table[i]
                 console.log(this.table[i]);
                 // console.log(`${i} ,${curr.key}, ${curr.value}`);
             }
