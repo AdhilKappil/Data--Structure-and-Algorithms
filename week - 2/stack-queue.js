@@ -1,35 +1,35 @@
-// queue data stracture in object                                                    
-class Queue{
-    constructor(){
-        this.items={}
-        this.fontIndex=0
-        this.backIndex=0
-    }
-    enqueue(item){
-        this.items[this.backIndex]=item
-        this.backIndex++
-        return item+ "inserted"
-    }
-    deqeueue(){
-       const item= this.items[this.fontIndex]
-        delete this.items[this.fontIndex]
-        this.fontIndex++
-        return item
-    }
-    peek(){
-        return this.items[this.fontIndex]
-    }
-    print(){
-    return this.items
-    }
+// // queue data stracture in object                                                    
+// class Queue{
+//     constructor(){
+//         this.items={}
+//         this.fontIndex=0
+//         this.backIndex=0
+//     }
+//     enqueue(item){
+//         this.items[this.backIndex]=item
+//         this.backIndex++
+//         return item+ "inserted"
+//     }
+//     deqeueue(){
+//        const item= this.items[this.fontIndex]
+//         delete this.items[this.fontIndex]
+//         this.fontIndex++
+//         return item
+//     }
+//     peek(){
+//         return this.items[this.fontIndex]
+//     }
+//     print(){
+//     return this.items
+//     }
     
-}
-let queue= new Queue()
-queue.enqueue(10)
-queue.enqueue(20)
-queue.enqueue(30)
-console.log('this peek  ',queue.peek());
-console.log(queue.print());
+// }
+// let queue= new Queue()
+// queue.enqueue(10)
+// queue.enqueue(20)
+// queue.enqueue(30)
+// console.log('this peek  ',queue.peek());
+// console.log(queue.print());
 
 
 // queue in array
