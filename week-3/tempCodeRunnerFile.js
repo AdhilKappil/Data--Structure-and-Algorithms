@@ -1,1 +1,0 @@
-bst.breadthTraversal(bst.root)
