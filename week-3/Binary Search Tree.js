@@ -106,7 +106,8 @@ class BinarySearchTree{
 
     delete(value){
         this.root = this.deleteNode(this.root,value)
-    }
+    } 
+
     deleteNode(root,value){
         if(root === null){
             return root;
@@ -128,6 +129,38 @@ class BinarySearchTree{
         }
         return root
     }
+
+    findClosestValue(root, target){
+        let close = root.value;
+        while(root){
+            if(Math.abs(root.value - target) < Math.abs(close - target)){
+                close = root.value
+            }
+            if(root.value === target){
+                return root.value
+            }else if(root.value > target){
+                root = root.left;
+            }else{
+                root = root.right
+            }
+        }
+        return close
+    }
+
+}
+
+function isBST(root, min = Number.MIN_SAFE_INTEGER, max = Number.MAX_SAFE_INTEGER) {
+    if (!root) {
+        return true;
+    }
+
+    if (root.value <= min || root.value >= max) {
+        return false;
+    }
+
+    return (
+        isBST(root.left, min, root.value) && isBST(root.right, root.value, max)
+    );
 }
 
 const bst = new BinarySearchTree();
@@ -137,11 +170,13 @@ bst.insert(5);
 bst.insert(20);
 bst.insert(3);
 bst.insert(8);
+console.log(bst.search(bst.root, 230));
 bst.breadthTraversal(bst.root)
 // console.log(bst.min(bst.root));
-console.log('jfdhgkjfd');
-bst.delete(10)
-bst.breadthTraversal(bst.root)
+// console.log('jfdhgkjfd');
+// bst.delete(10)
+// bst.breadthTraversal(bst.root)
 // bst.preOrder(bst.root)
 // bst.inOrder(bst.root)
 // bst.postOrder(bst.root)
+console.log('close',bst.findClosestValue(bst.root,7));

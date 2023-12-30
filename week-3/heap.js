@@ -69,7 +69,10 @@ class MinHeap{
    // Function to build a heap from an array
   buildHeap(arr){
       this.heap = [...arr]
-      this.shiftDown(0)
+        // Start from the last non-leaf node and perform shifDown
+        for (let i = Math.floor(this.heap.length / 2) - 1; i >= 0; i--) {
+            this.shiftDown(i);
+        }
   }
 
   parent(index){
@@ -87,23 +90,26 @@ class MinHeap{
   peek(){
       return this.heap[0]
   }
+  search(value){
+    return this.heap.includes(value)
+  }
 
 }
 
 const heap = new MinHeap()
 
-heap.insert(15);
-heap.insert(5);
-heap.insert(20);
-heap.insert(10)
+// heap.insert(15);
+// heap.insert(5);
+// heap.insert(20);
+// heap.insert(10)
 
-heap.display()
-heap.remove()
+// heap.display()
+// heap.remove()
 heap.display()
 
-const arr = [20,10,5,15]
+const arr = [20,10,5,15,13,4,1,7]
 heap.buildHeap(arr)
 heap.display()
 
-console.log(heap.rightChild(0));
-console.log(heap.peek());
+// console.log(heap.rightChild(0));
+// console.log(heap.peek());
