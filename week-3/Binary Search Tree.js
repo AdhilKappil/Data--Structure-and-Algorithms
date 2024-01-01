@@ -73,7 +73,7 @@ class BinarySearchTree{
         }
     }
 
-    breadthTraversal(root){
+    breadthTraversal(){
         const queue = [];
         queue.push(this.root);
         while(queue.length){
@@ -147,36 +147,51 @@ class BinarySearchTree{
         return close
     }
 
-}
-
-function isBST(root, min = Number.MIN_SAFE_INTEGER, max = Number.MAX_SAFE_INTEGER) {
-    if (!root) {
-        return true;
+    // cheking is it is bst or not
+     isBST(tree) {
+        const values = [];
+        
+        function inOrderTraversal(node) {
+            if (node !== null) {
+                inOrderTraversal(node.left);
+                values.push(node.value);
+                inOrderTraversal(node.right);
+            }
+        }
+        // Perform in-order traversal starting from the root
+        inOrderTraversal(tree);
+        // Check if the values array is sorted
+        for (let i = 1; i < values.length; i++) {
+            if (values[i] <= values[i - 1]) {
+                return false;
+            }
+        }
+    
+         return true;
     }
 
-    if (root.value <= min || root.value >= max) {
-        return false;
-    }
-
-    return (
-        isBST(root.left, min, root.value) && isBST(root.right, root.value, max)
-    );
 }
+
+
 
 const bst = new BinarySearchTree();
 
-bst.insert(10);
-bst.insert(5);
-bst.insert(20);
+bst.insert(15);
 bst.insert(3);
-bst.insert(8);
+bst.insert(10);
+bst.insert(1);
+bst.insert(4);
+bst.insert(12);
+bst.insert(11);
+
 console.log(bst.search(bst.root, 230));
 bst.breadthTraversal(bst.root)
-// console.log(bst.min(bst.root));
-// console.log('jfdhgkjfd');
-// bst.delete(10)
-// bst.breadthTraversal(bst.root)
-// bst.preOrder(bst.root)
-// bst.inOrder(bst.root)
-// bst.postOrder(bst.root)
+console.log(bst.min(bst.root));
+console.log();
+bst.delete(10)
+bst.breadthTraversal()
+bst.preOrder(bst.root)
+bst.inOrder(bst.root)
+bst.postOrder(bst.root)
 console.log('close',bst.findClosestValue(bst.root,7));
+console.log(bst.isBST(bst.root));

@@ -7,7 +7,7 @@ class MinHeap{
   insert(value){
       this.heap.push(value);
       this.shiftUp(this.heap.length-1)
-  }
+  }                                            // O(log n)T  O(1)s
 
   // Function to heapify the array from bottom to top
   shiftUp(index){
@@ -29,7 +29,7 @@ class MinHeap{
 
   display(){
       console.log(this.heap);
-  }
+  }// O(n)
 
     // Function to remove the top element from the heap
   remove(){
@@ -43,7 +43,7 @@ class MinHeap{
           this.heap[0] = lastValue;
           this.shiftDown(0)
       }
-      return removeValue
+      return removeValue     //O(n)T   O(1)S
   }
 
    // Function to heapify the array from top to bottom
@@ -73,7 +73,7 @@ class MinHeap{
         for (let i = Math.floor(this.heap.length / 2) - 1; i >= 0; i--) {
             this.shiftDown(i);
         }
-  }
+  }// O(n)
 
   parent(index){
       return Math.floor((index-1)/2)
@@ -98,10 +98,10 @@ class MinHeap{
 
 const heap = new MinHeap()
 
-// heap.insert(15);
-// heap.insert(5);
-// heap.insert(20);
-// heap.insert(10)
+heap.insert(15);
+heap.insert(5);
+heap.insert(20);
+heap.insert(10)
 
 // heap.display()
 // heap.remove()

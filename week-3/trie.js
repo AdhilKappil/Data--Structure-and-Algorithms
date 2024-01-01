@@ -36,17 +36,12 @@ class Trie {
         return node.isEnd;
     }
 
-    insertSubstringStartingAt(word, index) {
-        for (let i = index; i < word.length; i++) {
+    populateSuffixTree(word) {
+        for (let i = 0; i < word.length; i++) {
             this.insert(word.substring(i));
         }
     }
 
-    populateSuffixTree(word) {
-        for (let i = 0; i < word.length; i++) {
-            this.insertSubstringStartingAt(word, i);
-        }
-    }
 }
 
 // Example Usage:
@@ -60,7 +55,7 @@ trie.populateSuffixTree('saip')
 // console.log(trie.contains("saip")); 
 console.log(trie);
 // true
-console.log(trie.contains("saip")); 
+console.log(trie.contains("sanu")); 
 // false
 // console.log(trie.contains("banana"));
  // true

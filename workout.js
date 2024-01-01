@@ -1,72 +1,50 @@
-class MinHeap{
+class Graph{
     constructor(){
-        this.heap = [];
+        this.list = {}
     }
 
-    insert(value){
-        this.heap.push(value);
-        this.shiftUp(this.heap.length - 1)
-    }
-    shiftUp(index){
-        while(index>0){
-            let parentInd = Math.floor((index-1)/2);
-            if(this.heap[parentInd] > this.heap[index]){
-                this.swap(parentInd, index);
-                index = parentInd
-            }else{
-                break;
-            }
+    addVertex(vertex){
+        if(!this.list[vertex]){
+            this.list[vertex] = new Set()
         }
     }
-    swap(i, j){
-       [this.heap[i], this.heap[j]] = [this.heap[j], this.heap[i]]
+    addEdges(vertex1, vertex2){
+        if(!this.list[vertex1]){
+            this.list[vertex1] = new Set()
+        }
+        if(!this.list[vertex2]){
+            this.list[vertex2] = new Set()
+        }
+        this.list[vertex1].add(vertex2)
+        this.list[vertex2].add(vertex1)
     }
-    
     display(){
-        console.log(this.heap);
-    }
-    search(value){
-        return this.heap.includes(value)
-    }
-    remove(){
-        const removeIndex = this.heap.pop();
-        const lastValue = this.heap[this.heap.length-1]
-        if(this.heap.length>0){
-            this.heap[0] = lastValue;
-            this.shifDown(0)    
-        }
-        return removeIndex
-    }
-    shifDown(index){
-       let leftChild = Math.floor(index * 2 + 1)
-       let rightChild = Math.floor(index * 2 + 2)
-       let minIndex = index
-
-        if(leftChild<this.heap.length && this.heap[leftChild]<this.heap[minIndex]){
-            minIndex = leftChild;
-        }
-        if(rightChild<this.heap.length && this.heap[rightChild]<this.heap[minIndex]){
-            minIndex = rightChild;
-        }
-        if(minIndex != index){
-            this.swap(minIndex, index)
-            this.shifDown(minIndex)
+        for(let vetex in this.list){
+            console.log(vetex+'->'+[...this.list[vetex]]);
         }
     }
-    build(arr) {
-        this.heap = [...arr];
-    
-        // Start from the last non-leaf node and perform shifDown
-        for(let i= Math.floor(this.heap.length /2)-1 ; i>=0; i--){
-            this.shifDown(i)
-        }
+    deleteEdges(vertex1, vertex2){
+        this.list[vertex1].delete(vertex2)
+        this.list[vertex2].delete(vertex1)
     }
-    
+    removeVertex(vertex){
+    if(!this.list[vertex]){
+        return
+    }
+        for(let vert of this.list[vertex]){
+            this.deleteEdges(vert, vertex)
+        }
+        delete this.list[vertex]
+    }
+    search(vertex1,vertex2){
+        return this.list[vertex1].has(vertex2) && this.list[vertex2].has(vertex1)
+    }
 }
 
-const heap = new MinHeap();
-
-
-const arr = [5,3,2,7,9,3,45,1,3,33,0,4]  
-heap.build(arr)
-heap.display()
+const graph = new Graph()
+graph.addVertex("A")
+graph.addEdges("B",'C')
+// graph.deleteEdges('B','C')
+// graph.removeVertex('B')
+graph.display()
+console.log(graph.search('B','C'));
