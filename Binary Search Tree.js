@@ -176,22 +176,22 @@ class BinarySearchTree{
 
 const bst = new BinarySearchTree();
 
+bst.insert(6);
+bst.insert(5);
+bst.insert(8);
+bst.insert(2);
 bst.insert(15);
-bst.insert(3);
-bst.insert(10);
-bst.insert(1);
-bst.insert(4);
-bst.insert(12);
-bst.insert(11);
+bst.insert(7);
+// bst.insert(11);
 
-console.log(bst.search(bst.root, 230));
-bst.breadthTraversal(bst.root)
-console.log(bst.min(bst.root));
-console.log();
-bst.delete(10)
-bst.breadthTraversal()
-bst.preOrder(bst.root)
+// console.log(bst.search(bst.root, 230));
+// bst.breadthTraversal(bst.root)
+// console.log(bst.min(bst.root));
+// console.log();
+// bst.delete(10)
+// bst.breadthTraversal()
+// bst.preOrder(bst.root)
 bst.inOrder(bst.root)
-bst.postOrder(bst.root)
-console.log('close',bst.findClosestValue(bst.root,7));
-console.log(bst.isBST(bst.root));
+// bst.postOrder(bst.root)
+// console.log('close',bst.findClosestValue(bst.root,7));
+// console.log(bst.isBST(bst.root));

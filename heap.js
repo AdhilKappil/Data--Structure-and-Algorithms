@@ -43,7 +43,7 @@ class MinHeap{
           this.heap[0] = lastValue;
           this.shiftDown(0)
       }
-      return removeValue     //O(n)T   O(1)S
+      return removeValue     //O(log n)T   O(1)S
   }
 
    // Function to heapify the array from top to bottom
@@ -73,7 +73,7 @@ class MinHeap{
         for (let i = Math.floor(this.heap.length / 2) - 1; i >= 0; i--) {
             this.shiftDown(i);
         }
-  }// O(n)
+  }// O(n log n)  buildheap (n) +  shiftDown(log n)
 
   parent(index){
       return Math.floor((index-1)/2)
