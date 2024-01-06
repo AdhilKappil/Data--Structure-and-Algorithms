@@ -42,38 +42,34 @@ class Graph{
     BSF(start){
         const queue = [start];
         const visited = new Set();
-        const result = []
 
         while(queue.length){
             const vertex = queue.shift();
             if(!visited.has(vertex)){
                 visited.add(vertex);
-                result.push(vertex);
 
                 for(let edges of this.list[vertex]){
                     queue.push(edges);
                 }
             }
         }
-        return result;  // O(v+e) T   O(v) S
+        return visited;  // O(v+e) T   O(v) S
     }
     DFS(start){
         const stack = [start];
         const visited = new Set();
-        const result = []
 
         while(stack.length){
             const vertex = stack.pop()
             if(!visited.has(vertex)){
                 visited.add(vertex);
-                result.push(vertex);
 
                 for(let edges of this.list[vertex]){
                     stack.push(edges);
                 }
             }
         }
-        return result   // O(v+e) T   O(v) S
+        return visited  // O(v+e) T   O(v) S
     }
     
 } 
