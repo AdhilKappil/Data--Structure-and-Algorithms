@@ -66,6 +66,35 @@ class likedList{
         this.size --
         return value
     }
+
+    reverse(){
+        let prev = null 
+        let curr = this.head
+        while(curr){
+            let next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next
+        }
+        this.tail = this.head
+        this.head = prev
+      }
+
+      reverseRecursively() {
+        const headNode = this.head
+        const reverseHelper = (current, prev) => {
+            if (!current) {
+                this.head = prev;
+                return;
+            }
+            const nextNode = current.next;
+            current.next = prev;
+            reverseHelper(nextNode, current);
+        };
+  
+        reverseHelper(this.head, null);
+        this.tail = headNode;
+    }
     
     removeEnd(){
         if(this.isEmpty()){

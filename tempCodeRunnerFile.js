@@ -1,1 +1,2 @@
-bst.insert(11);
+list.reverseRecursively()
+// list.print()

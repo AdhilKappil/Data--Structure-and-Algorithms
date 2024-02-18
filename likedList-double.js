@@ -72,6 +72,7 @@ class Node {
       this.size--;
       return value;
     }
+
   
     print() {
       if (this.isEmpty()) {

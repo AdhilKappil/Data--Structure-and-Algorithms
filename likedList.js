@@ -146,6 +146,37 @@ class linkedList{
         }
         this.head = prev
     }
+    
+
+    // reversing using recursion
+    reverseRecursively() {
+        const reverseHelper = (current, prev) => {
+            if (!current) {
+                this.head = prev;
+                return;
+            }
+            const nextNode = current.next;
+            current.next = prev;
+            reverseHelper(nextNode, current);
+        };
+  
+        reverseHelper(this.head, null);
+    }
+
+
+    // calculating the all value sum
+    sum(){
+        if(this.isEmpty()){
+            return null
+        }
+        let pos = this.head
+        let sum = 0
+        while(pos){
+            sum += pos.value
+            pos = pos.next
+        }
+        return sum
+    }
 
 
     // finding the middle element 

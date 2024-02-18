@@ -26,7 +26,8 @@ function powerOf2 (n){
     if(n<1){
         return false
     }
-
+   
+   // comparing with bitwise operation
    return (n & (n-1)) === 0
 }
 
@@ -123,3 +124,17 @@ function search(arr,v,lef,rig){
         return search(arr,v,midd+1,rig)
     }
 }
+
+
+// string reversing using recursion
+const str = 'Adhil'
+let j = str.length-1
+
+function revers(str,j){
+    if(j < 0){
+        return ''
+    }
+    return str[j] + revers(str,j-1)
+}
+
+console.log(revers(str,j));
