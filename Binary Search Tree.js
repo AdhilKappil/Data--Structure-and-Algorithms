@@ -170,6 +170,29 @@ class BinarySearchTree{
          return true;
     }
 
+    hight(root){
+        if(!root){
+            return 0
+        }else{
+            let left = this.hight(root.left)
+            let right = this.hight(root.right)
+            return 1+ Math.max(left,right)
+        }
+    }
+
+    isBalenced(root){
+        if(!root){
+            return true
+        }
+        let left = this.hight(root.left)
+        let right = this.hight(root.right)
+        if(Math.abs(left-right) <= 1 && this.isBalenced(root.left && this.isBalenced(root.right))){
+            return true
+        }else{
+            return false
+        }
+    }
+
 }
 
 

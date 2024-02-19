@@ -1,2 +1,1 @@
-list.reverseRecursively()
-// list.print()
+bst.inOrder(bst.root)

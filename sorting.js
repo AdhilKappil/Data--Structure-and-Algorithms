@@ -77,6 +77,7 @@ function mergeSort (arr){
     const rig = arr.slice(midd);
     return merge(mergeSort(lef), mergeSort(rig))
 }
+
 function merge(lef,rig){
     const sortArry = []
     while(lef.length && rig.length){
