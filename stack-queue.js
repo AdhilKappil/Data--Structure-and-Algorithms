@@ -58,15 +58,15 @@ class Queue{
 }
 
 const queue = new Queue ()
-queue.enqueue(10)
-queue.enqueue(20)
-queue.enqueue(30)
+// queue.enqueue(10)
+// queue.enqueue(20)
+// queue.enqueue(30)
 
-queue.print()
-queue.peek()
-queue.dequeue()
-queue.print()
-console.log(queue.isEmpty());
+// queue.print()
+// queue.peek()
+// queue.dequeue()
+// queue.print()
+// console.log(queue.isEmpty());
 
 
 // stack data stracture
@@ -93,16 +93,44 @@ class Stack{
     print(){
        console.log(this.items);
     }
+
+     // Valid paranthesis
+     isValidParanthesis(str, obj){
+        
+        for(let par of str){
+            if(par in obj){
+                this.items.push(par)
+            }else{
+                let val = this.items.pop()
+                if(obj[val] != par){
+                    return false
+                }
+            }
+        }
+        return this.items.length === 0
+    }
  }
 
  const stack = new Stack()
 
- stack.push(10)
- stack.push(20)
- stack.push(30);
- stack.print()
+//  stack.push(10)
+//  stack.push(20)
+//  stack.push(30);
+//  stack.print()
 
- stack.pop()
- stack.print()
- console.log(stack.peek());
- console.log(stack.isEmpty());
+//  stack.pop()
+//  stack.print()
+//  console.log(stack.peek());
+//  console.log(stack.isEmpty());
+
+obj = {
+    '(':')',
+    '[':']',
+    '{':'}'
+}
+
+const string = '([{}])'
+console.log(stack.isValidParanthesis(string, obj));
+
+
+
