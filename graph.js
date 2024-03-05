@@ -53,7 +53,7 @@ class Graph{
     }// time complexity depend on adjecent verticies O(V+E)   O(1)S
 
 
-    BSF(start){
+    BFS(start){
         const queue = [start];
         const visited = new Set();
 
@@ -109,5 +109,5 @@ graph.addEdge('A','D',);
 // graph.removeVertex('A')
 // graph.display()
 // console.log(graph.hasEdge("C","B"));
-console.log(graph.BSF('A'));
+console.log(graph.BFS('A'));
 console.log(graph.DFS('A'));

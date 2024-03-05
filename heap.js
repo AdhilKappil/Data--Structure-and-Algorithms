@@ -12,7 +12,7 @@ class MinHeap {
     insert(value) {
       this.heap.push(value);
       this.shiftUp(this.heap.length - 1);
-    }
+    } // O(log n)
   
     // Function to heapify the array from bottom to top
     shiftUp(index) {
@@ -45,23 +45,9 @@ class MinHeap {
         this.swap(index, smallestIndex);
         this.shiftDown(smallestIndex);
       }
-    }
-  
-    // Function to build a heap from an array
-    buildHeap(arr) {
-      this.heap = [...arr];
-  
-      for (let i = Math.floor(this.heap.length / 2) - 1; i >= 0; i--) {
-        this.shiftDown(i);
-      }
-    }
-  
-  
-    // Function to peek at the top element of the heap
-    peek() {
-      return this.heap[0];
-    }
-  
+    } // O(log n)
+
+
     // Function to remove the top element from the heap
     remove() {
       if (this.heap.length === 0) {
@@ -78,6 +64,22 @@ class MinHeap {
   
       return removedValue;
     }
+  
+    // Function to build a heap from an array
+    buildHeap(arr) {
+      this.heap = [...arr];
+  
+      for (let i = Math.floor(this.heap.length / 2) - 1; i >= 0; i--) {
+        this.shiftDown(i);
+      }
+    }// O(log n)
+  
+  
+    // Function to peek at the top element of the heap
+    peek() {
+      return this.heap[0];
+    }
+  
   
     // Function to get the index of the parent of a given index
     parent(index) {
@@ -102,10 +104,12 @@ class MinHeap {
   
   // Example usage:
   const heap = new MinHeap();
-  heap.insert(15);
-  heap.insert(5);
-  heap.insert(20);
-  heap.insert(10);
-  heap.insert(25);
-  heap.remove();
+//   heap.insert(15);
+//   heap.insert(5);
+//   heap.insert(20);
+//   heap.insert(10);
+//   heap.insert(25);
+//   heap.remove();
+const arr = [10,1,2,5,70,0,8,3]
+heap.buildHeap(arr)
   heap.display();

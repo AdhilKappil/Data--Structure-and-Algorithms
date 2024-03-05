@@ -138,3 +138,22 @@ function revers(str,j){
 }
 
 console.log(revers(str,j));
+
+
+
+// function cheking is palindrom using recursion
+function isPalindrom(str,i,j){
+    
+    if(i>=j){
+        return true
+    }
+    if(str[i] != str[j]){
+        return false
+    }
+    
+    return isPalindrom(str,i+1, j-1)
+    
+}
+
+const str = '12321'
+console.log(isPalindrom(str, 0, str.length-1))

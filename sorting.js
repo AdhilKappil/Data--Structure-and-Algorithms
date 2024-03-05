@@ -6,11 +6,8 @@ function bubbleSorting(arr){
     do{
         swaped = false
         for(let i=0; i<arr.length; i++){
-            let temp
             if(arr[i]>arr[i+1]){
-                temp = arr[i];
-                arr[i] = arr[i+1];
-                arr[i+1] = temp;
+                [arr[i], arr[i+1]] = [arr[i+1], arr[i]]
                 swaped = true;
             }
         }
@@ -18,9 +15,9 @@ function bubbleSorting(arr){
     while(swaped)
 } //O(n^2)
 
-// const arr = [-4,7,1,-2,7,0]
-// bubbleSorting(arr)
-// console.log(arr);
+const arr = [-4,7,1,-2,7,0]
+bubbleSorting(arr)
+console.log(arr);
 
 
 // insertion sorting 
@@ -60,8 +57,8 @@ function quickSort(arr){
     return [...quickSort(lef), pivot ,...quickSort(rig)]
 }
 
-const arr = [4,6,1,0,10,-1,7,-4]
-console.log(quickSort(arr));
+// const arr = [4,6,1,0,10,-1,7,-4]
+// console.log(quickSort(arr));
 
 // worst case O(n^2) if it is a sorted array
 // avg case O(n log n)
