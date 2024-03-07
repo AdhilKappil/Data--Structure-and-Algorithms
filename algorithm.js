@@ -141,7 +141,7 @@ console.log(revers(str,j));
 
 
 
-// function cheking is palindrom using recursion
+// function cheking is palindrom using Recursion
 function isPalindrom(str,i,j){
     
     if(i>=j){
@@ -155,5 +155,5 @@ function isPalindrom(str,i,j){
     
 }
 
-const str = '12321'
+// const str = '12321'
 console.log(isPalindrom(str, 0, str.length-1))

@@ -1,3 +1,1 @@
 
-
-const str = 'hello world '

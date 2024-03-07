@@ -105,3 +105,47 @@ console.log("After removing 'name':");
 table.remove("name");
 table.display();
 console.log(table.search("naem"));
+
+
+
+
+
+// collision handling using leanier probing
+///////////////////////////////////////
+
+insert(key, value){
+    const index = this.hash(key)
+    
+    if(this.table[index] === undefined){
+        this.table[index] = new Node(key, value)
+    }else{
+       let nextIndex = (index + 1)%this.size
+       console.log(index)
+       console.log(nextIndex)
+       while(nextIndex !== index){
+           if(this.table[nextIndex] === undefined){
+               this.table[nextIndex] = new Node(key, value)
+               return
+           }
+           nextIndex = (nextIndex + 1)%this.size
+       }
+       console.log('hash table is full canot add this value')
+    }
+}
+
+
+
+search(key){
+    const index = this.hash(key)
+    let newIndex = index
+    while(this.table[newIndex] != undefined){
+        if(this.table[newIndex].key === key){
+            return this.table[newIndex].value
+        }
+        newIndex = (newIndex + 1)%this.size
+        if(index === newIndex){
+            return false
+        }
+    }
+    return false
+}
