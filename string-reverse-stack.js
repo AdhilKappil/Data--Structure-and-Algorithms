@@ -1,4 +1,4 @@
-const str = 'Adhil Ali HGD'
+const str = 'Adhil Ali CT'
 const stack = []
 let result = ''
 
