@@ -133,6 +133,52 @@ class likedList {
       return "this value not in this list";
     }
   }
+
+  reverseFrom(node) {
+    let prev = null;
+    let curr = node;
+    while (curr) {
+      let next = curr.next;
+      curr.next = prev;
+      prev = curr;
+      curr = next;
+    }
+    return prev;
+  }
+
+  // Method to check if the linked list is a palindrome
+  isPalindrome() {
+    if (this.isEmpty() || this.head.next === null) return true;
+
+    // Step 1: Find the middle of the linked list
+    let slow = this.head;
+    let fast = this.head;
+    while (fast && fast.next) {
+      slow = slow.next;
+      fast = fast.next.next;
+    }
+
+    // Step 2: Reverse the second half of the linked list
+    let secondHalfHead = this.reverseFrom(slow);
+
+    // Step 3: Compare the first half with the reversed second half
+    let firstHalfHead = this.head;
+    let copyOfSecondHalfHead = secondHalfHead; // To restore the list later
+    while (secondHalfHead) {
+      if (firstHalfHead.value !== secondHalfHead.value) {
+        // Restore the original list before returning false
+        this.reverseFrom(copyOfSecondHalfHead);
+        return false;
+      }
+      firstHalfHead = firstHalfHead.next;
+      secondHalfHead = secondHalfHead.next;
+    }
+
+    // Restore the original list before returning true
+    this.reverseFrom(copyOfSecondHalfHead);
+    return true;
+  }
+
 }
 
 const list = new likedList();
@@ -141,12 +187,14 @@ list.append(10);
 list.append(20);
 list.append(30);
 
-list.print();
+// list.print();
 
-list.prepend(5);
-list.prepend(1);
-list.print();
-// console.log(list.removeStart());
-// console.log(list.removeValue(20));
-list.reverseRecursively()
-list.print();
+// list.prepend(5);
+// list.prepend(1);
+// list.print();
+// // console.log(list.removeStart());
+// // console.log(list.removeValue(20));
+// list.reverseRecursively()
+// list.print();
+
+console.log(list.isPalindrome());

@@ -10,7 +10,6 @@ for(let val of str){
         result+= ' '
     }
   stack.push(val)
-
 }
 
 while(stack.length>0){

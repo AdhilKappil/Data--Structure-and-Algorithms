@@ -79,7 +79,6 @@ function linearSearch(arr,n){
     })
     
     return r
-
 } 
 
 
